@@ -1308,10 +1308,6 @@ a.article-title:hover {
 }
 .article-entry {
   color: #555;
-  height: 200px;
-  padding-bottom: 50px;
-  overflow: hidden;
-  overflow-y: scroll;
   padding: 0 20px;
 }
 .article-entry:before,
