@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="樱凌轩的博客,笔记,项目过程,随笔">
+  <meta name="keywords" content="樱凌轩凌轩,博客,樱">
+  <link rel="icon" href="http://cnd.yinglingxuan.cn/%E5%A4%B4%E5%83%8F.jpg" type="image/x-icon">
+  
+  <title>Spring boot 和 Mybatis配置 | 樱凌轩的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Spring boot项目运行 方式1 可以直接软件里面运行 方式2 ：可以使用命令在当前的项目下运行 ： 用命令启动,到项目目录下面。运行:mvn spring-boot:run 方式3:mvn install,然后可以在项目下面的&quot;target&quot;目录下面看到项目de jar文件 java -jar girl-0.0.0.1-snapshot.jar  项目属性配置 App">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring boot 和 Mybatis配置">
+<meta property="og:url" content="https://yinglingxuan.github.io/2020/07/06/Springboot%20%E5%92%8CMybatis%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="樱凌轩的博客">
+<meta property="og:description" content="Spring boot项目运行 方式1 可以直接软件里面运行 方式2 ：可以使用命令在当前的项目下运行 ： 用命令启动,到项目目录下面。运行:mvn spring-boot:run 方式3:mvn install,然后可以在项目下面的&quot;target&quot;目录下面看到项目de jar文件 java -jar girl-0.0.0.1-snapshot.jar  项目属性配置 App">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/yinglingxuan/yinglingxuan.github.io/blob/master/img/Springboot1.png">
+<meta property="og:image" content="https://github.com/yinglingxuan/yinglingxuan.github.io/blob/master/img/Sptingboot2.png">
+<meta property="article:published_time" content="2020-07-06T08:24:57.000Z">
+<meta property="article:modified_time" content="2020-07-07T02:53:37.532Z">
+<meta property="article:author" content="樱凌轩">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Spring boot">
+<meta property="article:tag" content="Mybatis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/yinglingxuan/yinglingxuan.github.io/blob/master/img/Springboot1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="樱凌轩的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/plugin/bganimation/bg.css">
+
+  
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://cnd.yinglingxuan.cn/%E5%A4%B4%E5%83%8F.jpg">
+    <h2 class="author">樱凌轩</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>3</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>3</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>7</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-Springboot 和Mybatis配置" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/06/Springboot%20%E5%92%8CMybatis%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time class="post-time" datetime="2020-07-06T08:24:57.000Z" itemprop="datePublished">
+    <span class="post-month">7月</span><br/>
+    <span class="post-day">06</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Spring boot 和 Mybatis配置
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="spring-boot项目运行"><a class="markdownIt-Anchor" href="#spring-boot项目运行"></a> Spring boot项目运行</h1>
+<p><strong>方式1 可以直接软件里面运行</strong></p>
+<p><strong>方式2 ：可以使用命令在当前的项目下运行 ： 用命令启动,到项目目录下面。运行:mvn spring-boot:run</strong></p>
+<p><strong>方式3:mvn install,然后可以在项目下面的&quot;target&quot;目录下面看到项目de jar文件<br />
+java -jar girl-0.0.0.1-snapshot.jar</strong></p>
+<h1 id="项目属性配置"><a class="markdownIt-Anchor" href="#项目属性配置"></a> 项目属性配置</h1>
+<p><strong>Application.java<br />
+每次可以通过运行该类，启动服务。</strong></p>
+<p><strong>配置文件application.properties和application.yml任意一个就行</strong></p>
+<h2 id="applicationproperties中配置"><a class="markdownIt-Anchor" href="#applicationproperties中配置"></a> application.properties中配置</h2>
+<p><strong>server.port=8081    端口</strong></p>
+<p><strong>server.context-path=/girl   端口路径</strong></p>
+<h2 id="applicationyml中配置"><a class="markdownIt-Anchor" href="#applicationyml中配置"></a> application.yml中配置</h2>
+<p><strong>这个文件是自己新建的，名字一定要这样命名才有效</strong></p>
+<pre><code>server:
+  port: 8081 端口
+  context-path: /girl   //访问路径
+</code></pre>
+<p>项目访问路径是:<a href="http://localhost:8080/girl/hello" target="_blank" rel="noopener">http://localhost:8080/girl/hello</a></p>
+<h1 id="controller的使用"><a class="markdownIt-Anchor" href="#controller的使用"></a> Controller的使用</h1>
+<p><strong>@Controller:处理http请求</strong></p>
+<p><strong>@RestController:Spring4之后新加的注解，原来返回json需要</strong></p>
+<p><strong>@ResponseBody配合@Controller</strong></p>
+<p><strong>@RequestMapping:配置url映射</strong></p>
+<h2 id="1-controller类使用举例"><a class="markdownIt-Anchor" href="#1-controller类使用举例"></a> 1. @Controller类使用举例</h2>
+<pre><code>pom.xml增加
+
+&lt;dependency&gt;
+   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+   &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+访问类中配置
+@RequestMapping(value={&quot;/hello&quot;,&quot;/hi&quot;},method=RequestMethod.GET)
+映射了两个地址
+@PathVariable:获取url中的数据
+@RequestParam:获取请求参数的值
+@GetMapping:组合注解
+
+Controller的写法
+@RequestMapping(value=&quot;/hello/{id}&quot;,method=RequestMethod.GET)
+public String say(@PathVariable(&quot;id&quot;) Integer id){
+	return &quot;id:&quot;+id;
+}
+访问路径：http://localhost:8081/hello/44
+</code></pre>
+<h2 id="情况二-controller的写法"><a class="markdownIt-Anchor" href="#情况二-controller的写法"></a> 情况二 Controller的写法</h2>
+<pre><code>@RequestMapping(value=&quot;/hello&quot;,method=RequestMethod.GET)
+public String say(@RequestParam(&quot;id&quot;) Integer id){
+	return &quot;id:&quot;+id;
+}
+访问路径:http://localhost:8081/hello?id=2
+id为空会报错。那么下面设置可以避免  设置默认值
+
+/*@RequestMapping(value=&quot;/hello&quot;,method=RequestMethod.GET)*/
+/*简化RequestMethod.GET方式。同理还有@PostMapping*/
+@GetMapping(value=&quot;/hello&quot;)
+public String say(@RequestParam(value=&quot;id&quot;,required=false,defaultValue = &quot;0&quot;) Integer id){ 
+	return &quot;id:&quot;+id;
+}
+</code></pre>
+<h1 id="mybatis配置"><a class="markdownIt-Anchor" href="#mybatis配置"></a> Mybatis配置</h1>
+<h2 id="导入对应的包"><a class="markdownIt-Anchor" href="#导入对应的包"></a> 导入对应的包</h2>
+<pre><code>mybatis的包
+&lt;!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter --&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
+	&lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;
+	&lt;version&gt;1.3.1&lt;/version&gt;
+&lt;/dependency&gt;
+
+
+mybatis的jdbc的整合包
+&lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;mysql&lt;/groupId&gt;
+	&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+	&lt;version&gt;8.0.11&lt;/version&gt;
+&lt;/dependency&gt;
+
+
+在idea中要再导入
+&lt;!-- https://mvnrepository.com/artifact/junit/junit --&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;junit&lt;/groupId&gt;
+	&lt;artifactId&gt;junit&lt;/artifactId&gt;
+	&lt;version&gt;4.12&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2 id="1-然后再applicationproperties中配置连接数据库的数据和账号密码"><a class="markdownIt-Anchor" href="#1-然后再applicationproperties中配置连接数据库的数据和账号密码"></a> 1 然后再application.properties中配置连接数据库的数据和账号密码</h2>
+<pre><code>mybatis.type-aliases-package=com.neo.entity
+spring.datasource.driverClassName = com.mysql.cj.jdbc.Driver
+spring.datasource.url = jdbc:mysql://127.0.0.1:3307/lxdome?characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=UTC
+spring.datasource.username = root
+spring.datasource.password = 123456
+
+springboot会自动加载spring.datasource.*相关配置，数据源就会自动注入到sqlSessionFactory中，sqlSessionFactory会自动注入到Mapper中，对了你一切都不用管了，直接拿起来使用就行了。
+</code></pre>
+<h2 id="2-在启动类中添加对mapper包扫描mapperscan"><a class="markdownIt-Anchor" href="#2-在启动类中添加对mapper包扫描mapperscan"></a> 2 在启动类中添加对mapper包扫描@MapperScan</h2>
+<pre><code>@SpringBootApplication
+@MapperScan(&quot;com.neo.mapper&quot;)
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+}
+或者直接在Mapper类上面添加注解@Mapper,建议使用上面那种直接扫描包，不然每个mapper加个注解也挺麻烦的
+</code></pre>
+<h2 id="3第一种配置方式-注解类配置-开发mapper注解的方式"><a class="markdownIt-Anchor" href="#3第一种配置方式-注解类配置-开发mapper注解的方式"></a> 3第一种配置方式 注解类配置  开发Mapper注解的方式</h2>
+<p><strong>定义使用的链接xml的接口类</strong>   注意数据的实体类创建</p>
+<blockquote>
+<p>第三步是最关键的一块，sql生产都在这里</p>
+</blockquote>
+<pre><code>public interface UserMapper {
+@Select(&quot;SELECT * FROM users&quot;)
+@Results({              对应参数注解
+	@Result(property = &quot;userSex&quot;,  column = &quot;user_sex&quot;, javaType = UserSexEnum.class),
+	@Result(property = &quot;nickName&quot;, column = &quot;nick_name&quot;)
+})
+List&lt;UserEntity&gt; getAll();
+
+@Select(&quot;SELECT * FROM users WHERE id = #{id}&quot;)
+@Results({
+	@Result(property = &quot;userSex&quot;,  column = &quot;user_sex&quot;, javaType = UserSexEnum.class),
+	@Result(property = &quot;nickName&quot;, column = &quot;nick_name&quot;)
+})
+UserEntity getOne(Long id);
+
+@Insert(&quot;INSERT INTO users(userName,passWord,user_sex) VALUES(#{userName}, #{passWord}, #{userSex})&quot;)
+void insert(UserEntity user);
+
+@Update(&quot;UPDATE users SET userName=#{userName},nick_name=#{nickName} WHERE id =#{id}&quot;)
+void update(UserEntity user);
+
+@Delete(&quot;DELETE FROM users WHERE id =#{id}&quot;)
+void delete(Long id);
+}
+
+@Select 是查询类的注解，所有的查询均使用这个
+@Result 修饰返回的结果集，关联实体类属性和数据库字段一一对应，如果实体类属性和数据库属性名保持一致，就不需要这个属性来修饰。
+@Insert 插入数据库使用，直接传入实体类会自动解析属性到对应的值
+@Update 负责修改，也可以直接传入对象
+@delete 负责删除
+</code></pre>
+<h2 id="访问层使用"><a class="markdownIt-Anchor" href="#访问层使用"></a> 访问层使用</h2>
+<p><strong>上面三步就基本完成了相关dao层开发，使用的时候当作普通的类注入进入就可以了</strong></p>
+<pre><code>@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserMapperTest {
+	@Autowired  直接注入
+	private UserMapper UserMapper;
+
+	@Test
+	public void testInsert() throws Exception {
+		UserMapper.insert(new UserEntity(&quot;aa&quot;, &quot;a123456&quot;, UserSexEnum.MAN));
+		UserMapper.insert(new UserEntity(&quot;bb&quot;, &quot;b123456&quot;, UserSexEnum.WOMAN));
+		UserMapper.insert(new UserEntity(&quot;cc&quot;, &quot;b123456&quot;, UserSexEnum.WOMAN));
+
+		Assert.assertEquals(3, UserMapper.getAll().size());
+	}
+
+	@Test
+	public void testQuery() throws Exception {
+		List&lt;UserEntity&gt; users = UserMapper.getAll();
+		System.out.println(users.toString());
+	}
+
+	@Test
+	public void testUpdate() throws Exception {
+		UserEntity user = UserMapper.getOne(3l);
+		System.out.println(user.toString());
+		user.setNickName(&quot;neo&quot;);
+		UserMapper.update(user);
+		Assert.assertTrue((&quot;neo&quot;.equals(UserMapper.getOne(3l).getNickName())));
+	}}
+}
+</code></pre>
+<h1 id="使用xml-的方式"><a class="markdownIt-Anchor" href="#使用xml-的方式"></a> 使用xml 的方式</h1>
+<p><strong>极简xml版本</strong></p>
+<p><strong>极简xml版本保持映射文件的老传统，优化主要体现在不需要实现dao的是实现层，系统会自动根据方法名在映射文件中找对应的sql.</strong><br />
+1、配置<br />
+<strong>pom文件和上个版本一样，只是application.properties新增以下配置</strong><br />
+<strong>mybatis.config-locations=classpath:mybatis/mybatis-config.xml   xml文件的位置l</strong><br />
+<strong>mybatis.mapper-locations=classpath:mybatis/mapper/*.xml     多个xml文件的位置</strong><br />
+<strong>指定了mybatis基础配置文件和实体类映射文件的地址</strong><br />
+mybatis-config.xml 配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> &lt;configuration&gt;</span><br><span class="line">    &lt;typeAliases&gt;</span><br><span class="line">	    &lt;typeAlias alias&#x3D;&quot;Integer&quot; type&#x3D;&quot;java.lang.Integer&quot; &#x2F;&gt;</span><br><span class="line">	    &lt;typeAlias alias&#x3D;&quot;Long&quot; type&#x3D;&quot;java.lang.Long&quot; &#x2F;&gt;</span><br><span class="line">	    &lt;typeAlias alias&#x3D;&quot;HashMap&quot; type&#x3D;&quot;java.util.HashMap&quot; &#x2F;&gt;</span><br><span class="line">	    &lt;typeAlias alias&#x3D;&quot;LinkedHashMap&quot; type&#x3D;&quot;java.util.LinkedHashMap&quot; &#x2F;&gt;</span><br><span class="line">	    &lt;typeAlias alias&#x3D;&quot;ArrayList&quot; type&#x3D;&quot;java.util.ArrayList&quot; &#x2F;&gt;</span><br><span class="line">	    &lt;typeAlias alias&#x3D;&quot;LinkedList&quot; type&#x3D;&quot;java.util.LinkedList&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;typeAliases&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
+<p>​    这里也可以添加一些mybatis基础的配置<br />
+​    2、添加User的映射文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;mapper namespace&#x3D;&quot;com.neo.mapper.UserMapper&quot; &gt;</span><br><span class="line">    &lt;resultMap id&#x3D;&quot;BaseResultMap&quot; type&#x3D;&quot;com.neo.entity.UserEntity&quot; &gt;</span><br><span class="line">	    &lt;id column&#x3D;&quot;id&quot; property&#x3D;&quot;id&quot; jdbcType&#x3D;&quot;BIGINT&quot; &#x2F;&gt;</span><br><span class="line">	    &lt;result column&#x3D;&quot;userName&quot; property&#x3D;&quot;userName&quot; jdbcType&#x3D;&quot;VARCHAR&quot; &#x2F;&gt;</span><br><span class="line">	    &lt;result column&#x3D;&quot;passWord&quot; property&#x3D;&quot;passWord&quot; jdbcType&#x3D;&quot;VARCHAR&quot; &#x2F;&gt;</span><br><span class="line">	    &lt;result column&#x3D;&quot;user_sex&quot; property&#x3D;&quot;userSex&quot; javaType&#x3D;&quot;com.neo.enums.UserSexEnum&quot;&#x2F;&gt;</span><br><span class="line">	    &lt;result column&#x3D;&quot;nick_name&quot; property&#x3D;&quot;nickName&quot; jdbcType&#x3D;&quot;VARCHAR&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;resultMap&gt;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+<p>​</p>
+<p>​    这里也可以添加一些mybatis基础的配置<br />
+​    2、添加User的映射文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;mapper namespace&#x3D;&quot;com.neo.mapper.UserMapper&quot; &gt;</span><br><span class="line"> &lt;resultMap id&#x3D;&quot;BaseResultMap&quot; type&#x3D;&quot;com.neo.entity.UserEntity&quot; &gt;</span><br><span class="line">  &lt;id column&#x3D;&quot;id&quot; property&#x3D;&quot;id&quot; jdbcType&#x3D;&quot;BIGINT&quot; &#x2F;&gt;</span><br><span class="line">  &lt;result column&#x3D;&quot;userName&quot; property&#x3D;&quot;userName&quot; jdbcType&#x3D;&quot;VARCHAR&quot; &#x2F;&gt;</span><br><span class="line">  &lt;result column&#x3D;&quot;passWord&quot; property&#x3D;&quot;passWord&quot; jdbcType&#x3D;&quot;VARCHAR&quot; &#x2F;&gt;</span><br><span class="line">  &lt;result column&#x3D;&quot;user_sex&quot; property&#x3D;&quot;userSex&quot; javaType&#x3D;&quot;com.neo.enums.UserSexEnum&quot;&#x2F;&gt;</span><br><span class="line">  &lt;result column&#x3D;&quot;nick_name&quot; property&#x3D;&quot;nickName&quot; jdbcType&#x3D;&quot;VARCHAR&quot; &#x2F;&gt;</span><br><span class="line"> &lt;&#x2F;resultMap&gt;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+<p>​</p>
+<pre><code>    &lt;sql id=&quot;Base_Column_List&quot; &gt;
+    	id, userName, passWord, user_sex, nick_name
+    &lt;/sql&gt;
+    
+    &lt;select id=&quot;getAll&quot; resultMap=&quot;BaseResultMap&quot;  &gt;
+       SELECT 
+       &lt;include refid=&quot;Base_Column_List&quot; /&gt;
+       FROM users
+    &lt;/select&gt;
+    
+    &lt;select id=&quot;getOne&quot; parameterType=&quot;java.lang.Long&quot; resultMap=&quot;BaseResultMap&quot; &gt;
+   	   SELECT 
+       &lt;include refid=&quot;Base_Column_List&quot; /&gt;
+       FROM users
+       WHERE id = #{id}
+    &lt;/select&gt;
+    
+    &lt;insert id=&quot;insert&quot; parameterType=&quot;com.neo.entity.UserEntity&quot; &gt;
+        INSERT INTO 
+	    users
+	    (userName,passWord,user_sex) 
+	    VALUES
+	    (#{userName}, #{passWord}, #{userSex})
+    &lt;/insert&gt;
+    
+    &lt;update id=&quot;update&quot; parameterType=&quot;com.neo.entity.UserEntity&quot; &gt;
+       UPDATE 
+	    users 
+	       SET 
+		    &lt;if test=&quot;userName != null&quot;&gt;userName = #{userName},&lt;/if&gt;
+		    &lt;if test=&quot;passWord != null&quot;&gt;passWord = #{passWord},&lt;/if&gt;
+		    nick_name = #{nickName}
+	       WHERE 
+	    id = #{id}
+    &lt;/update&gt;
+    
+    &lt;delete id=&quot;delete&quot; parameterType=&quot;java.lang.Long&quot; &gt;
+       DELETE FROM
+	     users 
+	       WHERE 
+	     id =#{id}
+    &lt;/delete&gt;
+&lt;/mapper&gt;
+其实就是把上个版本中mapper的sql搬到了这里的xml中了
+3、编写Dao层的代码
+public interface UserMapper {
+    List&lt;UserEntity&gt; getAll();
+    UserEntity getOne(Long id);
+    void insert(UserEntity user);
+    void update(UserEntity user);
+    void delete(Long id);
+}
+对比上一步这里全部只剩了接口方法
+</code></pre>
+<h2 id="idea自动导包"><a class="markdownIt-Anchor" href="#idea自动导包"></a> idea自动导包</h2>
+<p>Settings  中 Build Execution Deploy  下的Importing  勾选<br />
+Import Maven projects  automatical …</p>
+<p><img src="https://github.com/yinglingxuan/yinglingxuan.github.io/blob/master/img/Springboot1.png" alt="Springboot1" /></p>
+<p><img src="https://github.com/yinglingxuan/yinglingxuan.github.io/blob/master/img/Sptingboot2.png" alt="Sptingboot2" /></p>
+<h2 id="自动生成getset方法的插件"><a class="markdownIt-Anchor" href="#自动生成getset方法的插件"></a> 自动生成getset方法的插件</h2>
+<pre><code>&lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+    &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+    &lt;version&gt;1.18.4&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;
+使用注解
+@Data
+@ToString
+如果没有效果就
+1.File - &gt; setting - &gt; plugins
+2.点击Browse Repositories输入lombok
+3.点击安装
+4.重启IDEA
+</code></pre>
+<h2 id="更换连接池"><a class="markdownIt-Anchor" href="#更换连接池"></a> 更换连接池</h2>
+<p>在mybatis包中的将连接池剔除掉</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--mybatis--&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">	    &lt;groupId&gt;org.mybatis.spring.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">	    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;&#x2F;artifactId&gt;</span><br><span class="line">	    &lt;version&gt;1.3.2&lt;&#x2F;version&gt;</span><br><span class="line">	    &lt;exclusions&gt;</span><br><span class="line">		    &lt;!--排除数据库连接池--&gt;</span><br><span class="line">		    &lt;exclusion&gt;</span><br><span class="line">			    &lt;groupId&gt;com.zaxxer&lt;&#x2F;groupId&gt;</span><br><span class="line">			    &lt;artifactId&gt;HikariCP&lt;&#x2F;artifactId&gt;</span><br><span class="line">		    &lt;&#x2F;exclusion&gt;</span><br><span class="line">	    &lt;&#x2F;exclusions&gt;</span><br><span class="line">    &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>在装入druid连接池
+&lt;dependency&gt;
+&lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+&lt;artifactId&gt;druid-spring-boot-starter&lt;/artifactId&gt;
+&lt;version&gt;1.1.10&lt;/version&gt;
+&lt;/dependency&gt;
+直接启动就可以了https://hexo.io/docs/one-command-deployment.html)</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yinglingxuan.github.io/2020/07/06/Springboot%20%E5%92%8CMybatis%E9%85%8D%E7%BD%AE/" data-id="ckcbabkyd000048v50xm39nyl" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-boot/" rel="tag">Spring boot</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/07/%E7%AE%80%E5%8D%95%E7%9A%84%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          简单手写俄罗斯方块
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/06/Gulp%E9%85%8D%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Gulp配置</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">樱凌轩的博客</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://cnd.yinglingxuan.cn/%E5%A4%B4%E5%83%8F.jpg">
+    <h2 class="author">樱凌轩</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>3</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>3</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>7</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="http://github.com/yinglingxuan/" target="_blank" title="Github">
+          Github
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://segmentfault.com/a/1190000022769181" target="_blank" title="思否">
+          思否
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>个人简历</h2>
+      
+        <a class="hvr-bounce-in" href="http://cnd.yinglingxuan.cn/index.html#/" target="_blank" title="yinglingxuan">
+          yinglingxuan
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2019 - 2020 樱凌轩<br>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+
+  
+<script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+  
+<link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+
+  
+<script src="/plugin/galmenu/GalMenu.js"></script>
+
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title="" class="menuItem">个人作品</a>
+          
+            <a href="/xxxxxxx" title="" class="menuItem">关于我</a>
+          
+        </div>
+        
+          <audio id="audio" src="plugin/galmenu/wulusai.mp3"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
