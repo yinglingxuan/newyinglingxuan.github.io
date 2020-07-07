@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="description" content="樱凌轩的博客,笔记,项目过程,随笔">
-  <meta name="keywords" content="樱凌轩,凌轩,博客,樱,Spring boot,JavaScaipt,CSS,Java">
-  <link rel="icon" href="http://cnd.yinglingxuan.cn/%E5%A4%B4%E5%83%8F.jpg" type="image/x-icon">
+  <meta name="keywords" content="樱凌轩,凌轩,博客,樱,Springboot,JavaScaipt,CSS,Java">
+  
   
   <title>樱凌轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -33,6 +33,7 @@
   
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
+  <link rel="icon" href="http://cnd.yinglingxuan.cn/%E5%A4%B4%E5%83%8F.jpg" type="image/x-icon">
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 <body>
@@ -421,10 +422,158 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yinglingxuan.github.io/2020/07/07/%E7%AE%80%E5%8D%95%E7%9A%84%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/" data-id="ckcbbuz0t0000gov56rvjb21w" class="article-share-link">分享</a>
+      <a data-url="https://yinglingxuan.github.io/2020/07/07/%E7%AE%80%E5%8D%95%E7%9A%84%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/" data-id="ckcbd2g2j000kvov50ryt0ygb" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/" rel="tag">canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/" rel="tag">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-Gulp配置" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/06/Gulp%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time class="post-time" datetime="2020-07-06T08:24:57.000Z" itemprop="datePublished">
+    <span class="post-month">7月</span><br/>
+    <span class="post-day">06</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/06/Gulp%E9%85%8D%E7%BD%AE/">Gulp配置</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="gulpsettingdemo"><a class="markdownIt-Anchor" href="#gulpsettingdemo"></a> gulpSettingDemo</h1>
+<h1 id="gulp常用的配置和演示"><a class="markdownIt-Anchor" href="#gulp常用的配置和演示"></a> gulp常用的配置和演示</h1>
+<h1 id="对应的插件"><a class="markdownIt-Anchor" href="#对应的插件"></a> 对应的插件</h1>
+<pre><code>var gulp = require('gulp');
+var concat = require('gulp-concat');  //合并文件，减少网络请求。
+var header = require('gulp-header');
+var notify = require(&quot;gulp-notify&quot;);  //显示报错信息和报错后不终止当前gulp任务。
+var connect = require(&quot;gulp-connect&quot;); //这个gulp-connect启动服务器（并能时时同步）。
+var sass = require(&quot;gulp-sass&quot;);
+var autoprefixer = require('gulp-autoprefixer');  //插件可以根据我们的设置帮助我们自动补全浏览器的前缀(如：-moz、-ms、-webkit、-o)
+var webserver = require('gulp-webserver');//是开启服务器，通常和gulp-livereload结合使用
+var livereload = require('gulp-livereload');  //配置热加载,网页刷新
+var sourcemaps = require('gulp-sourcemaps');  //就是文件压缩后不利于查看与调试，但是有了sourcemap，出错的时候，除错工具将直接显示原始代码，而不是转换后的代码）
+var plumber = require('gulp-plumber');//可以阻止 gulp 插件发生错误导致进程退出并输出错误日志
+var ext_replace = require('gulp-ext-replace');  //用于更改文件扩展名。
+var cssmin = require('gulp-cssmin');
+var uglify = require('gulp-uglify');  //压缩
+var spritesmith = require(&quot;gulp.spritesmith&quot;)//配置雪碧图的插件
+</code></pre>
+<h1 id="对应插件的使用"><a class="markdownIt-Anchor" href="#对应插件的使用"></a> <strong>对应插件的使用</strong></h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;运行错误后自动中断执行</span><br><span class="line"></span><br><span class="line">var onError &#x3D; function (err) &#123;  &#x2F;&#x2F;设置异常</span><br><span class="line">    notify.onError(&#123;</span><br><span class="line">   	 	title: &quot;Gulp&quot;,</span><br><span class="line">    	subtitle: &quot;Failure!&quot;,</span><br><span class="line">   		message: &quot;Error: &lt;%&#x3D; error.message %&gt;&quot;,</span><br><span class="line">    	sound: &quot;Beep&quot;</span><br><span class="line">    &#125;)(err);</span><br><span class="line">    this.emit(&#39;end&#39;);</span><br><span class="line">&#125;;</span><br><span class="line">var scripts &#x3D; [</span><br><span class="line">	&#39;.&#x2F;src&#x2F;lib&#x2F;modal.js&#39;,</span><br><span class="line">	&#39;.&#x2F;src&#x2F;lib&#x2F;hotcss.js&#39;</span><br><span class="line">	&#x2F;&#x2F; &#39;.&#x2F;src&#x2F;lib&#x2F;star-rating.js&#39;</span><br><span class="line">];</span><br><span class="line">&#x2F;&#x2F;合并js插件</span><br><span class="line">gulp.task(&#39;scripts&#39;, function () &#123;</span><br><span class="line"></span><br><span class="line">   	 	return gulp.src(scripts)</span><br><span class="line">    	.pipe(concat(&#39;lib.js&#39;))   &#x2F;&#x2F;合并后的文件名</span><br><span class="line">    	.pipe(gulp.dest(&#39;dist&#x2F;js&#39;)) &#x2F;&#x2F;开两个为两个流</span><br><span class="line">    	&#x2F;&#x2F; .pipe(uglify())</span><br><span class="line">    	.pipe(gulp.dest(&#39;dist&#x2F;js&#39;)); &#x2F;&#x2F;第二个下标的目录</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;编译sass文件</span><br><span class="line">gulp.task(&#39;sass&#39;, function () &#123;</span><br><span class="line">	return gulp.src([&#39;.&#x2F;src&#x2F;style&#x2F;*.css&#39;])</span><br><span class="line">	.pipe(plumber(&#123; &#x2F;&#x2F;处理异常</span><br><span class="line"></span><br><span class="line">   	 	errorHandler: onError</span><br><span class="line">    &#125;))</span><br><span class="line">    &#x2F;&#x2F; .pipe(sass()) &#x2F;&#x2F;把scss转为css</span><br><span class="line">    &#x2F;&#x2F; .pipe(sourcemaps.init())&#x2F;&#x2F;生产时候启用，部署时取消</span><br><span class="line">    	.pipe(autoprefixer([   &#x2F;&#x2F;浏览器的版本</span><br><span class="line">    		&#39;last 2 versions&#39;,</span><br><span class="line">    		&#39;ff &gt;&#x3D; 30&#39;,</span><br><span class="line">    		&#39;chrome &gt;&#x3D; 34&#39;,</span><br><span class="line">    		&#39;ios &gt;&#x3D; 6&#39;,</span><br><span class="line">    		&#39;android &gt;&#x3D; 4.4&#39;,</span><br><span class="line">    		&#39;and_uc 9.9&#39;,</span><br><span class="line">    		&#39;IE &gt;&#x3D; 6&#39; </span><br><span class="line">    ]))</span><br><span class="line">    &#x2F;&#x2F; .pipe(sourcemaps.write())</span><br><span class="line">    &#x2F;&#x2F; .pipe (cssmin())</span><br><span class="line">    	.pipe(concat(&#39;style.css&#39;))</span><br><span class="line">    	.pipe(gulp.dest(&#39;.&#x2F;dist&#x2F;css&#x2F;&#39;))</span><br><span class="line">    	.pipe(livereload());</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>​</p>
+<pre><code>// 合并js
+gulp.task('customJs', function () {
+	return gulp.src('./src/js/*.js')
+	.pipe(plumber({
+	errorHandler: onError
+}))
+	.pipe(uglify()) //压缩文件，部署时启用
+	.pipe(concat('custom.js'))
+	.pipe(gulp.dest('./dist/js'));
+});
+
+var replace = require('gulp-replace');
+var fs = require(&quot;fs&quot;);
+//公共html部分
+gulp.task('include', function () {
+	var htmlDir = './dist/demos/';
+	fs.readdir(htmlDir, function (err, files) {
+    	if (err) {
+	    	console.log(err);
+	    } else {
+	    	files.forEach(function (f) {
+	    		if (f !== '_header.html' &amp;&amp; f !== '_footer.html') {
+	   				 gulp.src(htmlDir + f)
+	    			.pipe(replace(/&lt;!--header--&gt;[\s\S]*&lt;!--headerend--&gt;/, '&lt;!--header--&gt;\n' + fs.readFileSync(htmlDir + '_header.html', 'utf-8') + '\n&lt;!--headerend--&gt;'))
+	    			.pipe(replace(/&lt;!--footer--&gt;[\s\S]*&lt;!--footerend--&gt;/, '&lt;!--footer--&gt;\n' + fs.readFileSync(htmlDir + '_footer.html', 'utf-8') + '\n&lt;!--footerend--&gt;'))
+	    			.pipe(gulp.dest(htmlDir))
+	    		}
+	    	});
+	    }
+    });
+});
+
+//搭建本地服务器
+gulp.task('webserver', function () {
+	gulp.src('./dist')
+	.pipe(plumber({
+	errorHandler: onError
+}))
+	.pipe(webserver({
+    	port: 8124,
+    	livereload: true,
+    	directoryListing: false,
+    	open: true
+	}));
+});
+
+//配置雪碧图
+gulp.task('sprites', function () {
+return gulp.src('./src/imgs/*.png')//需要合并的图片地址
+		.pipe(plumber({
+			errorHandler: onError
+		}))
+    .pipe(spritesmith({
+	    imgName: 'demo.png',//保存合并后图片的地址
+	    cssName: './dist/css/sprites.css',//保存合并后对于css样式的地址
+	    padding:5,//合并时两个图片的间距
+	    algorithm: 'binary-tree',//注释1
+	    // cssTemplate:&quot;css/handlebarsStr.css&quot;//注释2
+    }))
+    	.pipe(gulp.dest('./dist/images/'));
+    });
+
+gulp.task(&quot;default&quot;, ['webserver', 'watch', 'sass', 'scripts', 'customJs','sprites']);
+
+//监听项目 即时刷新
+gulp.task('watch', function () {
+    livereload.listen();  //监听页面刷新
+    gulp.watch('./src/js/*.js', ['customJs']);  //刷新文件 watch 刷新的工具类
+    gulp.watch('./src/lib/*.js', ['scripts']);
+    gulp.watch('./src/style/*.css',['sass']);
+    // gulp.watch(['./dist/demos/_header.html','./dist/demos/_footer.html'], ['include']);  //公共HTML
+});</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yinglingxuan.github.io/2020/07/06/Gulp%E9%85%8D%E7%BD%AE/" data-id="ckcbd2g0w0001vov5bhoydfik" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/" rel="tag">css</a></li></ul>
 
     </footer>
   </div>
@@ -759,158 +908,10 @@ Import Maven projects  automatical …</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yinglingxuan.github.io/2020/07/06/Springboot%20%E5%92%8CMybatis%E9%85%8D%E7%BD%AE/" data-id="ckcbabkyd000048v50xm39nyl" class="article-share-link">分享</a>
+      <a data-url="https://yinglingxuan.github.io/2020/07/06/Springboot%20%E5%92%8CMybatis%E9%85%8D%E7%BD%AE/" data-id="ckcbd2g1e000avov559za1a5y" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-boot/" rel="tag">Spring boot</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-Gulp配置" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/06/Gulp%E9%85%8D%E7%BD%AE/" class="article-date">
-  <time class="post-time" datetime="2020-07-06T08:24:57.000Z" itemprop="datePublished">
-    <span class="post-month">7月</span><br/>
-    <span class="post-day">06</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/06/Gulp%E9%85%8D%E7%BD%AE/">Gulp配置</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
-  </div>
-
-          
-              
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="gulpsettingdemo"><a class="markdownIt-Anchor" href="#gulpsettingdemo"></a> gulpSettingDemo</h1>
-<h1 id="gulp常用的配置和演示"><a class="markdownIt-Anchor" href="#gulp常用的配置和演示"></a> gulp常用的配置和演示</h1>
-<h1 id="对应的插件"><a class="markdownIt-Anchor" href="#对应的插件"></a> 对应的插件</h1>
-<pre><code>var gulp = require('gulp');
-var concat = require('gulp-concat');  //合并文件，减少网络请求。
-var header = require('gulp-header');
-var notify = require(&quot;gulp-notify&quot;);  //显示报错信息和报错后不终止当前gulp任务。
-var connect = require(&quot;gulp-connect&quot;); //这个gulp-connect启动服务器（并能时时同步）。
-var sass = require(&quot;gulp-sass&quot;);
-var autoprefixer = require('gulp-autoprefixer');  //插件可以根据我们的设置帮助我们自动补全浏览器的前缀(如：-moz、-ms、-webkit、-o)
-var webserver = require('gulp-webserver');//是开启服务器，通常和gulp-livereload结合使用
-var livereload = require('gulp-livereload');  //配置热加载,网页刷新
-var sourcemaps = require('gulp-sourcemaps');  //就是文件压缩后不利于查看与调试，但是有了sourcemap，出错的时候，除错工具将直接显示原始代码，而不是转换后的代码）
-var plumber = require('gulp-plumber');//可以阻止 gulp 插件发生错误导致进程退出并输出错误日志
-var ext_replace = require('gulp-ext-replace');  //用于更改文件扩展名。
-var cssmin = require('gulp-cssmin');
-var uglify = require('gulp-uglify');  //压缩
-var spritesmith = require(&quot;gulp.spritesmith&quot;)//配置雪碧图的插件
-</code></pre>
-<h1 id="对应插件的使用"><a class="markdownIt-Anchor" href="#对应插件的使用"></a> <strong>对应插件的使用</strong></h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;运行错误后自动中断执行</span><br><span class="line"></span><br><span class="line">var onError &#x3D; function (err) &#123;  &#x2F;&#x2F;设置异常</span><br><span class="line">    notify.onError(&#123;</span><br><span class="line">   	 	title: &quot;Gulp&quot;,</span><br><span class="line">    	subtitle: &quot;Failure!&quot;,</span><br><span class="line">   		message: &quot;Error: &lt;%&#x3D; error.message %&gt;&quot;,</span><br><span class="line">    	sound: &quot;Beep&quot;</span><br><span class="line">    &#125;)(err);</span><br><span class="line">    this.emit(&#39;end&#39;);</span><br><span class="line">&#125;;</span><br><span class="line">var scripts &#x3D; [</span><br><span class="line">	&#39;.&#x2F;src&#x2F;lib&#x2F;modal.js&#39;,</span><br><span class="line">	&#39;.&#x2F;src&#x2F;lib&#x2F;hotcss.js&#39;</span><br><span class="line">	&#x2F;&#x2F; &#39;.&#x2F;src&#x2F;lib&#x2F;star-rating.js&#39;</span><br><span class="line">];</span><br><span class="line">&#x2F;&#x2F;合并js插件</span><br><span class="line">gulp.task(&#39;scripts&#39;, function () &#123;</span><br><span class="line"></span><br><span class="line">   	 	return gulp.src(scripts)</span><br><span class="line">    	.pipe(concat(&#39;lib.js&#39;))   &#x2F;&#x2F;合并后的文件名</span><br><span class="line">    	.pipe(gulp.dest(&#39;dist&#x2F;js&#39;)) &#x2F;&#x2F;开两个为两个流</span><br><span class="line">    	&#x2F;&#x2F; .pipe(uglify())</span><br><span class="line">    	.pipe(gulp.dest(&#39;dist&#x2F;js&#39;)); &#x2F;&#x2F;第二个下标的目录</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;编译sass文件</span><br><span class="line">gulp.task(&#39;sass&#39;, function () &#123;</span><br><span class="line">	return gulp.src([&#39;.&#x2F;src&#x2F;style&#x2F;*.css&#39;])</span><br><span class="line">	.pipe(plumber(&#123; &#x2F;&#x2F;处理异常</span><br><span class="line"></span><br><span class="line">   	 	errorHandler: onError</span><br><span class="line">    &#125;))</span><br><span class="line">    &#x2F;&#x2F; .pipe(sass()) &#x2F;&#x2F;把scss转为css</span><br><span class="line">    &#x2F;&#x2F; .pipe(sourcemaps.init())&#x2F;&#x2F;生产时候启用，部署时取消</span><br><span class="line">    	.pipe(autoprefixer([   &#x2F;&#x2F;浏览器的版本</span><br><span class="line">    		&#39;last 2 versions&#39;,</span><br><span class="line">    		&#39;ff &gt;&#x3D; 30&#39;,</span><br><span class="line">    		&#39;chrome &gt;&#x3D; 34&#39;,</span><br><span class="line">    		&#39;ios &gt;&#x3D; 6&#39;,</span><br><span class="line">    		&#39;android &gt;&#x3D; 4.4&#39;,</span><br><span class="line">    		&#39;and_uc 9.9&#39;,</span><br><span class="line">    		&#39;IE &gt;&#x3D; 6&#39; </span><br><span class="line">    ]))</span><br><span class="line">    &#x2F;&#x2F; .pipe(sourcemaps.write())</span><br><span class="line">    &#x2F;&#x2F; .pipe (cssmin())</span><br><span class="line">    	.pipe(concat(&#39;style.css&#39;))</span><br><span class="line">    	.pipe(gulp.dest(&#39;.&#x2F;dist&#x2F;css&#x2F;&#39;))</span><br><span class="line">    	.pipe(livereload());</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
-<p>​</p>
-<pre><code>// 合并js
-gulp.task('customJs', function () {
-	return gulp.src('./src/js/*.js')
-	.pipe(plumber({
-	errorHandler: onError
-}))
-	.pipe(uglify()) //压缩文件，部署时启用
-	.pipe(concat('custom.js'))
-	.pipe(gulp.dest('./dist/js'));
-});
-
-var replace = require('gulp-replace');
-var fs = require(&quot;fs&quot;);
-//公共html部分
-gulp.task('include', function () {
-	var htmlDir = './dist/demos/';
-	fs.readdir(htmlDir, function (err, files) {
-    	if (err) {
-	    	console.log(err);
-	    } else {
-	    	files.forEach(function (f) {
-	    		if (f !== '_header.html' &amp;&amp; f !== '_footer.html') {
-	   				 gulp.src(htmlDir + f)
-	    			.pipe(replace(/&lt;!--header--&gt;[\s\S]*&lt;!--headerend--&gt;/, '&lt;!--header--&gt;\n' + fs.readFileSync(htmlDir + '_header.html', 'utf-8') + '\n&lt;!--headerend--&gt;'))
-	    			.pipe(replace(/&lt;!--footer--&gt;[\s\S]*&lt;!--footerend--&gt;/, '&lt;!--footer--&gt;\n' + fs.readFileSync(htmlDir + '_footer.html', 'utf-8') + '\n&lt;!--footerend--&gt;'))
-	    			.pipe(gulp.dest(htmlDir))
-	    		}
-	    	});
-	    }
-    });
-});
-
-//搭建本地服务器
-gulp.task('webserver', function () {
-	gulp.src('./dist')
-	.pipe(plumber({
-	errorHandler: onError
-}))
-	.pipe(webserver({
-    	port: 8124,
-    	livereload: true,
-    	directoryListing: false,
-    	open: true
-	}));
-});
-
-//配置雪碧图
-gulp.task('sprites', function () {
-return gulp.src('./src/imgs/*.png')//需要合并的图片地址
-		.pipe(plumber({
-			errorHandler: onError
-		}))
-    .pipe(spritesmith({
-	    imgName: 'demo.png',//保存合并后图片的地址
-	    cssName: './dist/css/sprites.css',//保存合并后对于css样式的地址
-	    padding:5,//合并时两个图片的间距
-	    algorithm: 'binary-tree',//注释1
-	    // cssTemplate:&quot;css/handlebarsStr.css&quot;//注释2
-    }))
-    	.pipe(gulp.dest('./dist/images/'));
-    });
-
-gulp.task(&quot;default&quot;, ['webserver', 'watch', 'sass', 'scripts', 'customJs','sprites']);
-
-//监听项目 即时刷新
-gulp.task('watch', function () {
-    livereload.listen();  //监听页面刷新
-    gulp.watch('./src/js/*.js', ['customJs']);  //刷新文件 watch 刷新的工具类
-    gulp.watch('./src/lib/*.js', ['scripts']);
-    gulp.watch('./src/style/*.css',['sass']);
-    // gulp.watch(['./dist/demos/_header.html','./dist/demos/_footer.html'], ['include']);  //公共HTML
-});</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://yinglingxuan.github.io/2020/07/06/Gulp%E9%85%8D%E7%BD%AE/" data-id="ckcbahrfy000d48v5d1mch8wj" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/" rel="tag">css</a></li></ul>
 
     </footer>
   </div>
