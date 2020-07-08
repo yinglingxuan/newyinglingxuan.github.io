@@ -1,0 +1,308 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://yinglingxuan.github.io</id>
+    <title>樱凌轩的博客 • Posts by &#34;java&#34; tag</title>
+    <link href="https://yinglingxuan.github.io" />
+    <updated>2020-07-06T08:24:57.000Z</updated>
+    <category term="Gulp" />
+    <category term="JavaScript" />
+    <category term="css" />
+    <category term="Java" />
+    <category term="Spring boot" />
+    <category term="Mybatis" />
+    <category term="canvas" />
+    <entry>
+        <id>https://yinglingxuan.github.io/2020/07/06/Springboot%20%E5%92%8CMybatis%E9%85%8D%E7%BD%AE/</id>
+        <title>Spring boot 和 Mybatis配置</title>
+        <link rel="alternate" href="https://yinglingxuan.github.io/2020/07/06/Springboot%20%E5%92%8CMybatis%E9%85%8D%E7%BD%AE/"/>
+        <content type="html">&lt;h1 id=&#34;spring-boot项目运行&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#spring-boot项目运行&#34;&gt;&lt;/a&gt; Spring boot项目运行&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;方式1 可以直接软件里面运行&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方式2 ：可以使用命令在当前的项目下运行 ： 用命令启动,到项目目录下面。运行:mvn spring-boot:run&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方式3:mvn install,然后可以在项目下面的&amp;quot;target&amp;quot;目录下面看到项目de jar文件&lt;br /&gt;
+java -jar girl-0.0.0.1-snapshot.jar&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&#34;项目属性配置&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#项目属性配置&#34;&gt;&lt;/a&gt; 项目属性配置&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Application.java&lt;br /&gt;
+每次可以通过运行该类，启动服务。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;配置文件application.properties和application.yml任意一个就行&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;applicationproperties中配置&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#applicationproperties中配置&#34;&gt;&lt;/a&gt; application.properties中配置&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;server.port=8081    端口&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;server.context-path=/girl   端口路径&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;applicationyml中配置&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#applicationyml中配置&#34;&gt;&lt;/a&gt; application.yml中配置&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;这个文件是自己新建的，名字一定要这样命名才有效&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;server:
+  port: 8081 端口
+  context-path: /girl   //访问路径
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;项目访问路径是:&lt;a href=&#34;http://localhost:8080/girl/hello&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://localhost:8080/girl/hello&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;controller的使用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#controller的使用&#34;&gt;&lt;/a&gt; Controller的使用&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;@Controller:处理http请求&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;@RestController:Spring4之后新加的注解，原来返回json需要&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;@ResponseBody配合@Controller&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;@RequestMapping:配置url映射&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;1-controller类使用举例&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1-controller类使用举例&#34;&gt;&lt;/a&gt; 1. @Controller类使用举例&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;pom.xml增加
+
+&amp;lt;dependency&amp;gt;
+   &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+   &amp;lt;artifactId&amp;gt;spring-boot-starter-thymeleaf&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+
+访问类中配置
+@RequestMapping(value={&amp;quot;/hello&amp;quot;,&amp;quot;/hi&amp;quot;},method=RequestMethod.GET)
+映射了两个地址
+@PathVariable:获取url中的数据
+@RequestParam:获取请求参数的值
+@GetMapping:组合注解
+
+Controller的写法
+@RequestMapping(value=&amp;quot;/hello/{id}&amp;quot;,method=RequestMethod.GET)
+public String say(@PathVariable(&amp;quot;id&amp;quot;) Integer id){
+	return &amp;quot;id:&amp;quot;+id;
+}
+访问路径：http://localhost:8081/hello/44
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;情况二-controller的写法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#情况二-controller的写法&#34;&gt;&lt;/a&gt; 情况二 Controller的写法&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;@RequestMapping(value=&amp;quot;/hello&amp;quot;,method=RequestMethod.GET)
+public String say(@RequestParam(&amp;quot;id&amp;quot;) Integer id){
+	return &amp;quot;id:&amp;quot;+id;
+}
+访问路径:http://localhost:8081/hello?id=2
+id为空会报错。那么下面设置可以避免  设置默认值
+
+/*@RequestMapping(value=&amp;quot;/hello&amp;quot;,method=RequestMethod.GET)*/
+/*简化RequestMethod.GET方式。同理还有@PostMapping*/
+@GetMapping(value=&amp;quot;/hello&amp;quot;)
+public String say(@RequestParam(value=&amp;quot;id&amp;quot;,required=false,defaultValue = &amp;quot;0&amp;quot;) Integer id){ 
+	return &amp;quot;id:&amp;quot;+id;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;mybatis配置&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mybatis配置&#34;&gt;&lt;/a&gt; Mybatis配置&lt;/h1&gt;
+&lt;h2 id=&#34;导入对应的包&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#导入对应的包&#34;&gt;&lt;/a&gt; 导入对应的包&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;mybatis的包
+&amp;lt;!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter --&amp;gt;
+&amp;lt;dependency&amp;gt;
+	&amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;
+	&amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;/artifactId&amp;gt;
+	&amp;lt;version&amp;gt;1.3.1&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+
+
+mybatis的jdbc的整合包
+&amp;lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&amp;gt;
+&amp;lt;dependency&amp;gt;
+	&amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;
+	&amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;
+	&amp;lt;version&amp;gt;8.0.11&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+
+
+在idea中要再导入
+&amp;lt;!-- https://mvnrepository.com/artifact/junit/junit --&amp;gt;
+&amp;lt;dependency&amp;gt;
+	&amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt;
+	&amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt;
+	&amp;lt;version&amp;gt;4.12&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;1-然后再applicationproperties中配置连接数据库的数据和账号密码&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1-然后再applicationproperties中配置连接数据库的数据和账号密码&#34;&gt;&lt;/a&gt; 1 然后再application.properties中配置连接数据库的数据和账号密码&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;mybatis.type-aliases-package=com.neo.entity
+spring.datasource.driverClassName = com.mysql.cj.jdbc.Driver
+spring.datasource.url = jdbc:mysql://127.0.0.1:3307/lxdome?characterEncoding=UTF-8&amp;amp;useSSL=false&amp;amp;serverTimezone=UTC
+spring.datasource.username = root
+spring.datasource.password = 123456
+
+springboot会自动加载spring.datasource.*相关配置，数据源就会自动注入到sqlSessionFactory中，sqlSessionFactory会自动注入到Mapper中，对了你一切都不用管了，直接拿起来使用就行了。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-在启动类中添加对mapper包扫描mapperscan&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#2-在启动类中添加对mapper包扫描mapperscan&#34;&gt;&lt;/a&gt; 2 在启动类中添加对mapper包扫描@MapperScan&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;@SpringBootApplication
+@MapperScan(&amp;quot;com.neo.mapper&amp;quot;)
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+}
+或者直接在Mapper类上面添加注解@Mapper,建议使用上面那种直接扫描包，不然每个mapper加个注解也挺麻烦的
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3第一种配置方式-注解类配置-开发mapper注解的方式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#3第一种配置方式-注解类配置-开发mapper注解的方式&#34;&gt;&lt;/a&gt; 3第一种配置方式 注解类配置  开发Mapper注解的方式&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;定义使用的链接xml的接口类&lt;/strong&gt;   注意数据的实体类创建&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;第三步是最关键的一块，sql生产都在这里&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;public interface UserMapper {
+@Select(&amp;quot;SELECT * FROM users&amp;quot;)
+@Results({              对应参数注解
+	@Result(property = &amp;quot;userSex&amp;quot;,  column = &amp;quot;user_sex&amp;quot;, javaType = UserSexEnum.class),
+	@Result(property = &amp;quot;nickName&amp;quot;, column = &amp;quot;nick_name&amp;quot;)
+})
+List&amp;lt;UserEntity&amp;gt; getAll();
+
+@Select(&amp;quot;SELECT * FROM users WHERE id = #{id}&amp;quot;)
+@Results({
+	@Result(property = &amp;quot;userSex&amp;quot;,  column = &amp;quot;user_sex&amp;quot;, javaType = UserSexEnum.class),
+	@Result(property = &amp;quot;nickName&amp;quot;, column = &amp;quot;nick_name&amp;quot;)
+})
+UserEntity getOne(Long id);
+
+@Insert(&amp;quot;INSERT INTO users(userName,passWord,user_sex) VALUES(#{userName}, #{passWord}, #{userSex})&amp;quot;)
+void insert(UserEntity user);
+
+@Update(&amp;quot;UPDATE users SET userName=#{userName},nick_name=#{nickName} WHERE id =#{id}&amp;quot;)
+void update(UserEntity user);
+
+@Delete(&amp;quot;DELETE FROM users WHERE id =#{id}&amp;quot;)
+void delete(Long id);
+}
+
+@Select 是查询类的注解，所有的查询均使用这个
+@Result 修饰返回的结果集，关联实体类属性和数据库字段一一对应，如果实体类属性和数据库属性名保持一致，就不需要这个属性来修饰。
+@Insert 插入数据库使用，直接传入实体类会自动解析属性到对应的值
+@Update 负责修改，也可以直接传入对象
+@delete 负责删除
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;访问层使用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#访问层使用&#34;&gt;&lt;/a&gt; 访问层使用&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;上面三步就基本完成了相关dao层开发，使用的时候当作普通的类注入进入就可以了&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserMapperTest {
+	@Autowired  直接注入
+	private UserMapper UserMapper;
+
+	@Test
+	public void testInsert() throws Exception {
+		UserMapper.insert(new UserEntity(&amp;quot;aa&amp;quot;, &amp;quot;a123456&amp;quot;, UserSexEnum.MAN));
+		UserMapper.insert(new UserEntity(&amp;quot;bb&amp;quot;, &amp;quot;b123456&amp;quot;, UserSexEnum.WOMAN));
+		UserMapper.insert(new UserEntity(&amp;quot;cc&amp;quot;, &amp;quot;b123456&amp;quot;, UserSexEnum.WOMAN));
+
+		Assert.assertEquals(3, UserMapper.getAll().size());
+	}
+
+	@Test
+	public void testQuery() throws Exception {
+		List&amp;lt;UserEntity&amp;gt; users = UserMapper.getAll();
+		System.out.println(users.toString());
+	}
+
+	@Test
+	public void testUpdate() throws Exception {
+		UserEntity user = UserMapper.getOne(3l);
+		System.out.println(user.toString());
+		user.setNickName(&amp;quot;neo&amp;quot;);
+		UserMapper.update(user);
+		Assert.assertTrue((&amp;quot;neo&amp;quot;.equals(UserMapper.getOne(3l).getNickName())));
+	}}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;使用xml-的方式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#使用xml-的方式&#34;&gt;&lt;/a&gt; 使用xml 的方式&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;极简xml版本&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;极简xml版本保持映射文件的老传统，优化主要体现在不需要实现dao的是实现层，系统会自动根据方法名在映射文件中找对应的sql.&lt;/strong&gt;&lt;br /&gt;
+1、配置&lt;br /&gt;
+&lt;strong&gt;pom文件和上个版本一样，只是application.properties新增以下配置&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;mybatis.config-locations=classpath:mybatis/mybatis-config.xml   xml文件的位置l&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;mybatis.mapper-locations=classpath:mybatis/mapper/*.xml     多个xml文件的位置&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;指定了mybatis基础配置文件和实体类映射文件的地址&lt;/strong&gt;&lt;br /&gt;
+mybatis-config.xml 配置&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt; &amp;lt;configuration&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;lt;typeAliases&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	    &amp;lt;typeAlias alias&amp;#x3D;&amp;quot;Integer&amp;quot; type&amp;#x3D;&amp;quot;java.lang.Integer&amp;quot; &amp;#x2F;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	    &amp;lt;typeAlias alias&amp;#x3D;&amp;quot;Long&amp;quot; type&amp;#x3D;&amp;quot;java.lang.Long&amp;quot; &amp;#x2F;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	    &amp;lt;typeAlias alias&amp;#x3D;&amp;quot;HashMap&amp;quot; type&amp;#x3D;&amp;quot;java.util.HashMap&amp;quot; &amp;#x2F;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	    &amp;lt;typeAlias alias&amp;#x3D;&amp;quot;LinkedHashMap&amp;quot; type&amp;#x3D;&amp;quot;java.util.LinkedHashMap&amp;quot; &amp;#x2F;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	    &amp;lt;typeAlias alias&amp;#x3D;&amp;quot;ArrayList&amp;quot; type&amp;#x3D;&amp;quot;java.util.ArrayList&amp;quot; &amp;#x2F;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	    &amp;lt;typeAlias alias&amp;#x3D;&amp;quot;LinkedList&amp;quot; type&amp;#x3D;&amp;quot;java.util.LinkedList&amp;quot; &amp;#x2F;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;lt;&amp;#x2F;typeAliases&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;&amp;#x2F;configuration&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;​    这里也可以添加一些mybatis基础的配置&lt;br /&gt;
+​    2、添加User的映射文件&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;mapper namespace&amp;#x3D;&amp;quot;com.neo.mapper.UserMapper&amp;quot; &amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;lt;resultMap id&amp;#x3D;&amp;quot;BaseResultMap&amp;quot; type&amp;#x3D;&amp;quot;com.neo.entity.UserEntity&amp;quot; &amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	    &amp;lt;id column&amp;#x3D;&amp;quot;id&amp;quot; property&amp;#x3D;&amp;quot;id&amp;quot; jdbcType&amp;#x3D;&amp;quot;BIGINT&amp;quot; &amp;#x2F;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	    &amp;lt;result column&amp;#x3D;&amp;quot;userName&amp;quot; property&amp;#x3D;&amp;quot;userName&amp;quot; jdbcType&amp;#x3D;&amp;quot;VARCHAR&amp;quot; &amp;#x2F;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	    &amp;lt;result column&amp;#x3D;&amp;quot;passWord&amp;quot; property&amp;#x3D;&amp;quot;passWord&amp;quot; jdbcType&amp;#x3D;&amp;quot;VARCHAR&amp;quot; &amp;#x2F;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	    &amp;lt;result column&amp;#x3D;&amp;quot;user_sex&amp;quot; property&amp;#x3D;&amp;quot;userSex&amp;quot; javaType&amp;#x3D;&amp;quot;com.neo.enums.UserSexEnum&amp;quot;&amp;#x2F;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	    &amp;lt;result column&amp;#x3D;&amp;quot;nick_name&amp;quot; property&amp;#x3D;&amp;quot;nickName&amp;quot; jdbcType&amp;#x3D;&amp;quot;VARCHAR&amp;quot; &amp;#x2F;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;lt;&amp;#x2F;resultMap&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;​    这里也可以添加一些mybatis基础的配置&lt;br /&gt;
+​    2、添加User的映射文件&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;mapper namespace&amp;#x3D;&amp;quot;com.neo.mapper.UserMapper&amp;quot; &amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &amp;lt;resultMap id&amp;#x3D;&amp;quot;BaseResultMap&amp;quot; type&amp;#x3D;&amp;quot;com.neo.entity.UserEntity&amp;quot; &amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &amp;lt;id column&amp;#x3D;&amp;quot;id&amp;quot; property&amp;#x3D;&amp;quot;id&amp;quot; jdbcType&amp;#x3D;&amp;quot;BIGINT&amp;quot; &amp;#x2F;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &amp;lt;result column&amp;#x3D;&amp;quot;userName&amp;quot; property&amp;#x3D;&amp;quot;userName&amp;quot; jdbcType&amp;#x3D;&amp;quot;VARCHAR&amp;quot; &amp;#x2F;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &amp;lt;result column&amp;#x3D;&amp;quot;passWord&amp;quot; property&amp;#x3D;&amp;quot;passWord&amp;quot; jdbcType&amp;#x3D;&amp;quot;VARCHAR&amp;quot; &amp;#x2F;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &amp;lt;result column&amp;#x3D;&amp;quot;user_sex&amp;quot; property&amp;#x3D;&amp;quot;userSex&amp;quot; javaType&amp;#x3D;&amp;quot;com.neo.enums.UserSexEnum&amp;quot;&amp;#x2F;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &amp;lt;result column&amp;#x3D;&amp;quot;nick_name&amp;quot; property&amp;#x3D;&amp;quot;nickName&amp;quot; jdbcType&amp;#x3D;&amp;quot;VARCHAR&amp;quot; &amp;#x2F;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &amp;lt;&amp;#x2F;resultMap&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    &amp;lt;sql id=&amp;quot;Base_Column_List&amp;quot; &amp;gt;
+    	id, userName, passWord, user_sex, nick_name
+    &amp;lt;/sql&amp;gt;
+    
+    &amp;lt;select id=&amp;quot;getAll&amp;quot; resultMap=&amp;quot;BaseResultMap&amp;quot;  &amp;gt;
+       SELECT 
+       &amp;lt;include refid=&amp;quot;Base_Column_List&amp;quot; /&amp;gt;
+       FROM users
+    &amp;lt;/select&amp;gt;
+    
+    &amp;lt;select id=&amp;quot;getOne&amp;quot; parameterType=&amp;quot;java.lang.Long&amp;quot; resultMap=&amp;quot;BaseResultMap&amp;quot; &amp;gt;
+   	   SELECT 
+       &amp;lt;include refid=&amp;quot;Base_Column_List&amp;quot; /&amp;gt;
+       FROM users
+       WHERE id = #{id}
+    &amp;lt;/select&amp;gt;
+    
+    &amp;lt;insert id=&amp;quot;insert&amp;quot; parameterType=&amp;quot;com.neo.entity.UserEntity&amp;quot; &amp;gt;
+        INSERT INTO 
+	    users
+	    (userName,passWord,user_sex) 
+	    VALUES
+	    (#{userName}, #{passWord}, #{userSex})
+    &amp;lt;/insert&amp;gt;
+    
+    &amp;lt;update id=&amp;quot;update&amp;quot; parameterType=&amp;quot;com.neo.entity.UserEntity&amp;quot; &amp;gt;
+       UPDATE 
+	    users 
+	       SET 
+		    &amp;lt;if test=&amp;quot;userName != null&amp;quot;&amp;gt;userName = #{userName},&amp;lt;/if&amp;gt;
+		    &amp;lt;if test=&amp;quot;passWord != null&amp;quot;&amp;gt;passWord = #{passWord},&amp;lt;/if&amp;gt;
+		    nick_name = #{nickName}
+	       WHERE 
+	    id = #{id}
+    &amp;lt;/update&amp;gt;
+    
+    &amp;lt;delete id=&amp;quot;delete&amp;quot; parameterType=&amp;quot;java.lang.Long&amp;quot; &amp;gt;
+       DELETE FROM
+	     users 
+	       WHERE 
+	     id =#{id}
+    &amp;lt;/delete&amp;gt;
+&amp;lt;/mapper&amp;gt;
+其实就是把上个版本中mapper的sql搬到了这里的xml中了
+3、编写Dao层的代码
+public interface UserMapper {
+    List&amp;lt;UserEntity&amp;gt; getAll();
+    UserEntity getOne(Long id);
+    void insert(UserEntity user);
+    void update(UserEntity user);
+    void delete(Long id);
+}
+对比上一步这里全部只剩了接口方法
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;idea自动导包&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#idea自动导包&#34;&gt;&lt;/a&gt; idea自动导包&lt;/h2&gt;
+&lt;p&gt;Settings  中 Build Execution Deploy  下的Importing  勾选&lt;br /&gt;
+Import Maven projects  automatical …&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/Springboot1.png&#34; alt=&#34;img&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/Sptingboot2.png&#34; alt=&#34;img&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;自动生成getset方法的插件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#自动生成getset方法的插件&#34;&gt;&lt;/a&gt; 自动生成getset方法的插件&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok --&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.projectlombok&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;lombok&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.18.4&amp;lt;/version&amp;gt;
+    &amp;lt;scope&amp;gt;provided&amp;lt;/scope&amp;gt;
+&amp;lt;/dependency&amp;gt;
+使用注解
+@Data
+@ToString
+如果没有效果就
+1.File - &amp;gt; setting - &amp;gt; plugins
+2.点击Browse Repositories输入lombok
+3.点击安装
+4.重启IDEA
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;更换连接池&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#更换连接池&#34;&gt;&lt;/a&gt; 更换连接池&lt;/h2&gt;
+&lt;p&gt;在mybatis包中的将连接池剔除掉&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;!--mybatis--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;lt;dependency&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	    &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;&amp;#x2F;groupId&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	    &amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;&amp;#x2F;artifactId&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	    &amp;lt;version&amp;gt;1.3.2&amp;lt;&amp;#x2F;version&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	    &amp;lt;exclusions&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		    &amp;lt;!--排除数据库连接池--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		    &amp;lt;exclusion&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;			    &amp;lt;groupId&amp;gt;com.zaxxer&amp;lt;&amp;#x2F;groupId&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;			    &amp;lt;artifactId&amp;gt;HikariCP&amp;lt;&amp;#x2F;artifactId&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		    &amp;lt;&amp;#x2F;exclusion&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	    &amp;lt;&amp;#x2F;exclusions&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;lt;&amp;#x2F;dependency&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;pre&gt;&lt;code&gt;在装入druid连接池
+&amp;lt;dependency&amp;gt;
+&amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt;
+&amp;lt;artifactId&amp;gt;druid-spring-boot-starter&amp;lt;/artifactId&amp;gt;
+&amp;lt;version&amp;gt;1.1.10&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+直接启动就可以了https://hexo.io/docs/one-command-deployment.html)&lt;/code&gt;&lt;/pre&gt;
+</content>
+        <category term="Java" />
+        <category term="Spring boot" />
+        <category term="Mybatis" />
+        <updated>2020-07-06T08:24:57.000Z</updated>
+    </entry>
+</feed>

@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://yinglingxuan.github.io</id>
+    <title>樱凌轩的博客 • Posts by &#34;gulp&#34; tag</title>
+    <link href="https://yinglingxuan.github.io" />
+    <updated>2020-07-06T08:24:57.000Z</updated>
+    <category term="Gulp" />
+    <category term="JavaScript" />
+    <category term="css" />
+    <category term="Java" />
+    <category term="Spring boot" />
+    <category term="Mybatis" />
+    <category term="canvas" />
+    <entry>
+        <id>https://yinglingxuan.github.io/2020/07/06/Gulp%E9%85%8D%E7%BD%AE/</id>
+        <title>Gulp配置</title>
+        <link rel="alternate" href="https://yinglingxuan.github.io/2020/07/06/Gulp%E9%85%8D%E7%BD%AE/"/>
+        <content type="html">&lt;h1 id=&#34;gulpsettingdemo&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#gulpsettingdemo&#34;&gt;&lt;/a&gt; gulpSettingDemo&lt;/h1&gt;
+&lt;h1 id=&#34;gulp常用的配置和演示&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#gulp常用的配置和演示&#34;&gt;&lt;/a&gt; gulp常用的配置和演示&lt;/h1&gt;
+&lt;h1 id=&#34;对应的插件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#对应的插件&#34;&gt;&lt;/a&gt; 对应的插件&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;var gulp = require(&#39;gulp&#39;);
+var concat = require(&#39;gulp-concat&#39;);  //合并文件，减少网络请求。
+var header = require(&#39;gulp-header&#39;);
+var notify = require(&amp;quot;gulp-notify&amp;quot;);  //显示报错信息和报错后不终止当前gulp任务。
+var connect = require(&amp;quot;gulp-connect&amp;quot;); //这个gulp-connect启动服务器（并能时时同步）。
+var sass = require(&amp;quot;gulp-sass&amp;quot;);
+var autoprefixer = require(&#39;gulp-autoprefixer&#39;);  //插件可以根据我们的设置帮助我们自动补全浏览器的前缀(如：-moz、-ms、-webkit、-o)
+var webserver = require(&#39;gulp-webserver&#39;);//是开启服务器，通常和gulp-livereload结合使用
+var livereload = require(&#39;gulp-livereload&#39;);  //配置热加载,网页刷新
+var sourcemaps = require(&#39;gulp-sourcemaps&#39;);  //就是文件压缩后不利于查看与调试，但是有了sourcemap，出错的时候，除错工具将直接显示原始代码，而不是转换后的代码）
+var plumber = require(&#39;gulp-plumber&#39;);//可以阻止 gulp 插件发生错误导致进程退出并输出错误日志
+var ext_replace = require(&#39;gulp-ext-replace&#39;);  //用于更改文件扩展名。
+var cssmin = require(&#39;gulp-cssmin&#39;);
+var uglify = require(&#39;gulp-uglify&#39;);  //压缩
+var spritesmith = require(&amp;quot;gulp.spritesmith&amp;quot;)//配置雪碧图的插件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;对应插件的使用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#对应插件的使用&#34;&gt;&lt;/a&gt; &lt;strong&gt;对应插件的使用&lt;/strong&gt;&lt;/h1&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;50&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;#x2F;&amp;#x2F;运行错误后自动中断执行&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var onError &amp;#x3D; function (err) &amp;#123;  &amp;#x2F;&amp;#x2F;设置异常&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    notify.onError(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   	 	title: &amp;quot;Gulp&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    	subtitle: &amp;quot;Failure!&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   		message: &amp;quot;Error: &amp;lt;%&amp;#x3D; error.message %&amp;gt;&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    	sound: &amp;quot;Beep&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;)(err);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    this.emit(&amp;#39;end&amp;#39;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var scripts &amp;#x3D; [&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&amp;#39;.&amp;#x2F;src&amp;#x2F;lib&amp;#x2F;modal.js&amp;#39;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&amp;#39;.&amp;#x2F;src&amp;#x2F;lib&amp;#x2F;hotcss.js&amp;#39;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&amp;#x2F;&amp;#x2F; &amp;#39;.&amp;#x2F;src&amp;#x2F;lib&amp;#x2F;star-rating.js&amp;#39;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#x2F;&amp;#x2F;合并js插件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;gulp.task(&amp;#39;scripts&amp;#39;, function () &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   	 	return gulp.src(scripts)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    	.pipe(concat(&amp;#39;lib.js&amp;#39;))   &amp;#x2F;&amp;#x2F;合并后的文件名&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    	.pipe(gulp.dest(&amp;#39;dist&amp;#x2F;js&amp;#39;)) &amp;#x2F;&amp;#x2F;开两个为两个流&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    	&amp;#x2F;&amp;#x2F; .pipe(uglify())&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    	.pipe(gulp.dest(&amp;#39;dist&amp;#x2F;js&amp;#39;)); &amp;#x2F;&amp;#x2F;第二个下标的目录&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#x2F;&amp;#x2F;编译sass文件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;gulp.task(&amp;#39;sass&amp;#39;, function () &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	return gulp.src([&amp;#39;.&amp;#x2F;src&amp;#x2F;style&amp;#x2F;*.css&amp;#39;])&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	.pipe(plumber(&amp;#123; &amp;#x2F;&amp;#x2F;处理异常&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   	 	errorHandler: onError&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;))&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#x2F;&amp;#x2F; .pipe(sass()) &amp;#x2F;&amp;#x2F;把scss转为css&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#x2F;&amp;#x2F; .pipe(sourcemaps.init())&amp;#x2F;&amp;#x2F;生产时候启用，部署时取消&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    	.pipe(autoprefixer([   &amp;#x2F;&amp;#x2F;浏览器的版本&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    		&amp;#39;last 2 versions&amp;#39;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    		&amp;#39;ff &amp;gt;&amp;#x3D; 30&amp;#39;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    		&amp;#39;chrome &amp;gt;&amp;#x3D; 34&amp;#39;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    		&amp;#39;ios &amp;gt;&amp;#x3D; 6&amp;#39;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    		&amp;#39;android &amp;gt;&amp;#x3D; 4.4&amp;#39;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    		&amp;#39;and_uc 9.9&amp;#39;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    		&amp;#39;IE &amp;gt;&amp;#x3D; 6&amp;#39; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    ]))&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#x2F;&amp;#x2F; .pipe(sourcemaps.write())&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#x2F;&amp;#x2F; .pipe (cssmin())&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    	.pipe(concat(&amp;#39;style.css&amp;#39;))&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    	.pipe(gulp.dest(&amp;#39;.&amp;#x2F;dist&amp;#x2F;css&amp;#x2F;&amp;#39;))&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    	.pipe(livereload());&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 合并js
+gulp.task(&#39;customJs&#39;, function () {
+	return gulp.src(&#39;./src/js/*.js&#39;)
+	.pipe(plumber({
+	errorHandler: onError
+}))
+	.pipe(uglify()) //压缩文件，部署时启用
+	.pipe(concat(&#39;custom.js&#39;))
+	.pipe(gulp.dest(&#39;./dist/js&#39;));
+});
+
+var replace = require(&#39;gulp-replace&#39;);
+var fs = require(&amp;quot;fs&amp;quot;);
+//公共html部分
+gulp.task(&#39;include&#39;, function () {
+	var htmlDir = &#39;./dist/demos/&#39;;
+	fs.readdir(htmlDir, function (err, files) {
+    	if (err) {
+	    	console.log(err);
+	    } else {
+	    	files.forEach(function (f) {
+	    		if (f !== &#39;_header.html&#39; &amp;amp;&amp;amp; f !== &#39;_footer.html&#39;) {
+	   				 gulp.src(htmlDir + f)
+	    			.pipe(replace(/&amp;lt;!--header--&amp;gt;[\s\S]*&amp;lt;!--headerend--&amp;gt;/, &#39;&amp;lt;!--header--&amp;gt;\n&#39; + fs.readFileSync(htmlDir + &#39;_header.html&#39;, &#39;utf-8&#39;) + &#39;\n&amp;lt;!--headerend--&amp;gt;&#39;))
+	    			.pipe(replace(/&amp;lt;!--footer--&amp;gt;[\s\S]*&amp;lt;!--footerend--&amp;gt;/, &#39;&amp;lt;!--footer--&amp;gt;\n&#39; + fs.readFileSync(htmlDir + &#39;_footer.html&#39;, &#39;utf-8&#39;) + &#39;\n&amp;lt;!--footerend--&amp;gt;&#39;))
+	    			.pipe(gulp.dest(htmlDir))
+	    		}
+	    	});
+	    }
+    });
+});
+
+//搭建本地服务器
+gulp.task(&#39;webserver&#39;, function () {
+	gulp.src(&#39;./dist&#39;)
+	.pipe(plumber({
+	errorHandler: onError
+}))
+	.pipe(webserver({
+    	port: 8124,
+    	livereload: true,
+    	directoryListing: false,
+    	open: true
+	}));
+});
+
+//配置雪碧图
+gulp.task(&#39;sprites&#39;, function () {
+return gulp.src(&#39;./src/imgs/*.png&#39;)//需要合并的图片地址
+		.pipe(plumber({
+			errorHandler: onError
+		}))
+    .pipe(spritesmith({
+	    imgName: &#39;demo.png&#39;,//保存合并后图片的地址
+	    cssName: &#39;./dist/css/sprites.css&#39;,//保存合并后对于css样式的地址
+	    padding:5,//合并时两个图片的间距
+	    algorithm: &#39;binary-tree&#39;,//注释1
+	    // cssTemplate:&amp;quot;css/handlebarsStr.css&amp;quot;//注释2
+    }))
+    	.pipe(gulp.dest(&#39;./dist/images/&#39;));
+    });
+
+gulp.task(&amp;quot;default&amp;quot;, [&#39;webserver&#39;, &#39;watch&#39;, &#39;sass&#39;, &#39;scripts&#39;, &#39;customJs&#39;,&#39;sprites&#39;]);
+
+//监听项目 即时刷新
+gulp.task(&#39;watch&#39;, function () {
+    livereload.listen();  //监听页面刷新
+    gulp.watch(&#39;./src/js/*.js&#39;, [&#39;customJs&#39;]);  //刷新文件 watch 刷新的工具类
+    gulp.watch(&#39;./src/lib/*.js&#39;, [&#39;scripts&#39;]);
+    gulp.watch(&#39;./src/style/*.css&#39;,[&#39;sass&#39;]);
+    // gulp.watch([&#39;./dist/demos/_header.html&#39;,&#39;./dist/demos/_footer.html&#39;], [&#39;include&#39;]);  //公共HTML
+});&lt;/code&gt;&lt;/pre&gt;
+</content>
+        <category term="Gulp" />
+        <category term="JavaScript" />
+        <category term="css" />
+        <updated>2020-07-06T08:24:57.000Z</updated>
+    </entry>
+</feed>
