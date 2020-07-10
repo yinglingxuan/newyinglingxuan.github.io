@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://yinglingxuan.github.io</id>
+    <title>樱凌轩的博客 • Posts by &#34;布偶猫&#34; tag</title>
+    <link href="https://yinglingxuan.github.io" />
+    <updated>2020-07-10T02:09:57.000Z</updated>
+    <category term="Gulp" />
+    <category term="JavaScript" />
+    <category term="css" />
+    <category term="Java" />
+    <category term="Spring boot" />
+    <category term="Mybatis" />
+    <category term="canvas" />
+    <category term="布偶猫" />
+    <category term="日常" />
+    <category term="生活" />
+    <entry>
+        <id>https://yinglingxuan.github.io/2020/07/10/%E8%90%8C%E5%AE%A0%E6%97%A5%E5%B8%B8/</id>
+        <title>萌宠日常</title>
+        <link rel="alternate" href="https://yinglingxuan.github.io/2020/07/10/%E8%90%8C%E5%AE%A0%E6%97%A5%E5%B8%B8/"/>
+        <content type="html">&lt;h1 id=&#34;猫咪日常&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#猫咪日常&#34;&gt;#&lt;/a&gt; 猫咪日常&lt;/h1&gt;
+&lt;p&gt;&lt;video src=&#34;https://yinglingxuan.github.io/img/m12.mp4&#34;&gt;&lt;/video&gt;&lt;/p&gt;
+&lt;h1 id=&#34;猫咪握爪&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#猫咪握爪&#34;&gt;#&lt;/a&gt; 猫咪握爪&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m1.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m2.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;video src=&#34;https://yinglingxuan.github.io/img/m3.mp4&#34;&gt;&lt;/video&gt;&lt;/p&gt;
+&lt;h1 id=&#34;卡姿兰大眼睛&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#卡姿兰大眼睛&#34;&gt;#&lt;/a&gt; 卡姿兰大眼睛&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m4.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m5.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m6.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m7.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m8.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m9.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m10.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m11.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m13.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+</content>
+        <category term="布偶猫" />
+        <category term="日常" />
+        <category term="生活" />
+        <updated>2020-07-10T02:09:57.000Z</updated>
+    </entry>
+</feed>

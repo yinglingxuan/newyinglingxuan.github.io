@@ -5,8 +5,8 @@
         <link>https://yinglingxuan.github.io</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Tue, 07 Jul 2020 10:40:57 +0800</pubDate>
-        <lastBuildDate>Tue, 07 Jul 2020 10:40:57 +0800</lastBuildDate>
+        <pubDate>Fri, 10 Jul 2020 10:09:57 +0800</pubDate>
+        <lastBuildDate>Fri, 10 Jul 2020 10:09:57 +0800</lastBuildDate>
         <category>Gulp</category>
         <category>JavaScript</category>
         <category>css</category>
@@ -14,6 +14,35 @@
         <category>Spring boot</category>
         <category>Mybatis</category>
         <category>canvas</category>
+        <category>布偶猫</category>
+        <category>日常</category>
+        <category>生活</category>
+        <item>
+            <guid isPermalink="true">https://yinglingxuan.github.io/2020/07/10/%E8%90%8C%E5%AE%A0%E6%97%A5%E5%B8%B8/</guid>
+            <title>萌宠日常</title>
+            <link>https://yinglingxuan.github.io/2020/07/10/%E8%90%8C%E5%AE%A0%E6%97%A5%E5%B8%B8/</link>
+            <category>布偶猫</category>
+            <category>日常</category>
+            <category>生活</category>
+            <pubDate>Fri, 10 Jul 2020 10:09:57 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;猫咪日常&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#猫咪日常&#34;&gt;#&lt;/a&gt; 猫咪日常&lt;/h1&gt;
+&lt;p&gt;&lt;video src=&#34;https://yinglingxuan.github.io/img/m12.mp4&#34;&gt;&lt;/video&gt;&lt;/p&gt;
+&lt;h1 id=&#34;猫咪握爪&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#猫咪握爪&#34;&gt;#&lt;/a&gt; 猫咪握爪&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m1.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m2.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;video src=&#34;https://yinglingxuan.github.io/img/m3.mp4&#34;&gt;&lt;/video&gt;&lt;/p&gt;
+&lt;h1 id=&#34;卡姿兰大眼睛&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#卡姿兰大眼睛&#34;&gt;#&lt;/a&gt; 卡姿兰大眼睛&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m4.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m5.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m6.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m7.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m8.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m9.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m10.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m11.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yinglingxuan.github.io/img/m13.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://yinglingxuan.github.io/2020/07/07/%E7%AE%80%E5%8D%95%E7%9A%84%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/</guid>
             <title>简单手写俄罗斯方块</title>

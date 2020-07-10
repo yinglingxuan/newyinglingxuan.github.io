@@ -11,6 +11,9 @@
     <category term="Spring boot" />
     <category term="Mybatis" />
     <category term="canvas" />
+    <category term="布偶猫" />
+    <category term="日常" />
+    <category term="生活" />
     <entry>
         <id>https://yinglingxuan.github.io/2020/07/07/%E7%AE%80%E5%8D%95%E7%9A%84%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/</id>
         <title>简单手写俄罗斯方块</title>
